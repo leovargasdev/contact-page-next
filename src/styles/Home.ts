@@ -28,7 +28,7 @@ export const Content = styled.section`
   background: transparent;
   box-shadow: 3px 3px 25px 6px rgba(0, 0, 0, 0.2);
 
-  div {
+  > div {
     display: flex;
     flex-direction: column;
 
