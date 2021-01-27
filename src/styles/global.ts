@@ -9,9 +9,8 @@ export default createGlobalStyle`
   }
 
   body {
-    color: #FFF;
-    background: #0e0e0e;
-    /* font-family: 'Lumos'; */
+    color: #333;
+    font-family: 'Roboto', sans-serif;
     -webkit-font-smoothing: antialiased;
   }
 `
