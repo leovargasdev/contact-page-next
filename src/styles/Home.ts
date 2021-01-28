@@ -21,7 +21,7 @@ export const Content = styled.section`
 
   width: 100%;
   max-width: 1200px;
-  height: 600px;
+  height: 580px;
 
   margin: auto;
   border-radius: 12px;
@@ -32,6 +32,6 @@ export const Content = styled.section`
     display: flex;
     flex-direction: column;
 
-    padding: 50px;
+    padding: 60px;
   }
 `

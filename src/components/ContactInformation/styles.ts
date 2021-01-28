@@ -37,8 +37,8 @@ export const ContentRow = styled.div`
     /* background: pink; */
 
     p {
-      font-size: 1em;
-      line-height: 1.5em;
+      font-size: 16px;
+      line-height: 25px;
     }
   }
 `
@@ -46,7 +46,7 @@ export const ContentRow = styled.div`
 export const SocialMedias = styled.div`
   display: flex;
   align-items: center;
-
+  margin-bottom: 10px;
   /* background: coral; */
 
   svg {

@@ -5,6 +5,7 @@ import ContactInformation from '../components/ContactInformation'
 import { Container, Content } from '../styles/Home'
 
 const Home: React.FC = () => {
+  // console.log(process.env.GOOGLE_API_PRIVATE_KEY)
   return (
     <Container>
       <Content>
