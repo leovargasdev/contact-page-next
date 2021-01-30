@@ -22,12 +22,7 @@ const contact = async (request: NextApiRequest, response: NextApiResponse) => {
     date: new Date()
   })
 
-  return response.json({
-    funfou: 'ok',
-    key: process.env.GOOGLE_API_PRIVATE_KEY.replace(/\\n/g, '\n'),
-    email: process.env.GOOGLE_API_CLIENT_EMAIL,
-    sheetID: process.env.GOOGLE_SHEET_ID
-  })
+  response.status(204).redirect('/success')
 }
 
 export default contact
