@@ -6,10 +6,11 @@ import Input from '../Input'
 import { Container, Title, TitleLines, GridInputs, Button } from './styles'
 
 const ContactForm: React.FC = () => {
-  const router = useRouter()
-  const handleSubmit = useCallback(event => {
+  // const router = useRouter()
+  const handleSubmit = useCallback(async event => {
     event.preventDefault()
-    router.push('api/contact')
+    const response = await fetch('/api/contact')
+    console.log(response)
   }, [])
 
   return (

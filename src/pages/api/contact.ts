@@ -24,7 +24,9 @@ const contact = async (
     email: 'fulano@hotmail.com',
     phone: '5454545',
     company: 'Sony',
-    message: 'SAHDJKASHD KADKJAHSKDHASDHAKDHK AS ASD ASD AS D ASD '
+    message:
+      'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+    date: new Date()
   })
 
   response.status(200).json({
