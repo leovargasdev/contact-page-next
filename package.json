@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "date-fns": "^2.16.1",
     "google-spreadsheet": "^3.1.15",
     "next": "10.0.5",
     "react": "17.0.1",

@@ -1,8 +1,16 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { GoogleSpreadsheet } from 'google-spreadsheet'
+import { format } from 'date-fns'
+import pt from 'date-fns/locale/pt'
 
 const contact = async (request: NextApiRequest, response: NextApiResponse) => {
+  const { name, email, phone, company, message } = request.body
+
+  const date = format(new Date(), "dd' de 'MMMM' de 'yyyy', às 'hh:mm", {
+    locale: pt
+  })
+
   const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID)
 
   await doc.useServiceAccountAuth({
@@ -10,19 +18,11 @@ const contact = async (request: NextApiRequest, response: NextApiResponse) => {
     private_key: process.env.GOOGLE_API_PRIVATE_KEY.replace(/\\n/g, '\n')
   })
   await doc.loadInfo()
+
   const sheet = doc.sheetsByIndex[0]
+  await sheet.addRow({ name, email, phone, company, message, date })
 
-  await sheet.addRow({
-    name: 'Fulano',
-    email: 'fulano@hotmail.com',
-    phone: '5454545',
-    company: 'Agora vai',
-    message:
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    date: new Date()
-  })
-
-  response.status(204).redirect('/success')
+  response.status(200).json({ ok: true })
 }
 
 export default contact

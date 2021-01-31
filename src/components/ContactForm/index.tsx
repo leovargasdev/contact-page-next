@@ -1,13 +1,19 @@
 import React, { useCallback, useState } from 'react'
-import { useRouter } from 'next/router'
-import { FaRegEnvelope, FaPaperPlane } from 'react-icons/fa'
+import { FaRegEnvelope, FaPaperPlane, FaCheckCircle } from 'react-icons/fa'
 
 import Input from '../Input'
-import { Container, Title, TitleLines, GridInputs, Button } from './styles'
+import {
+  Container,
+  // Loading,
+  Title,
+  TitleLines,
+  GridInputs,
+  Button,
+  BoxSuccess
+} from './styles'
 
 const ContactForm: React.FC = () => {
-  const router = useRouter()
-
+  const [successSubmit, setSuccessSubmit] = useState(false)
   const handleSubmit = useCallback(event => {
     event.preventDefault()
     const data = {
@@ -18,12 +24,19 @@ const ContactForm: React.FC = () => {
       message: event.target[4].value
     }
 
-    console.log(data)
-    // router.push('/api/contact')
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    }).then(res => {
+      if (res.ok) setSuccessSubmit(true)
+    })
   }, [])
 
   return (
     <Container>
+      {/* <Loading /> */}
+
       <Title>
         <h2>Envie-nos uma mensagem</h2>
         <div>
@@ -66,6 +79,7 @@ const ContactForm: React.FC = () => {
           name="message"
           label="Mensagem"
           type="text"
+          defaultValue="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
           placeholder="Escreva sua mensagem aqui"
         />
 
@@ -73,6 +87,10 @@ const ContactForm: React.FC = () => {
           Enviar <FaPaperPlane />
         </Button>
       </form>
+      <BoxSuccess active={successSubmit}>
+        <FaCheckCircle />
+        <h1>Mensagem enviada com sucesso!</h1>
+      </BoxSuccess>
     </Container>
   )
 }
