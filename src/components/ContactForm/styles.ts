@@ -14,37 +14,45 @@ export const Container = styled.div`
   }
 `
 
-// export const Loading = styled.span`
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   right: 0;
-//   bottom: 0;
+export const Loading = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-//   width: 300px;
-//   height: 300px;
+  z-index: 5;
+  position: absolute;
+  top: 0;
+  left: 0;
 
-//   margin: auto;
-//   background: transparent;
+  width: 100%;
+  height: 100%;
 
-//   border-top: 2px solid transparent;
-//   border-left: 2px solid #752;
-//   border-bottom: 2px solid transparent;
-//   border-right: 2px solid transparent;
+  background: rgba(255, 255, 255, 0.6);
 
-//   border-radius: 50%;
-//   /* transform-origin: center center; */
-//   animation: rotation 1s linear infinite;
+  &::before {
+    content: '';
+    width: 250px;
+    height: 250px;
+    background: transparent;
 
-//   @keyframes rotation {
-//     0% {
-//       transform: rotate(0deg);
-//     }
-//     100% {
-//       transform: rotate(360deg);
-//     }
-//   }
-// `
+    border-top: 2px solid transparent;
+    border-left: 2px solid #674394;
+    border-bottom: 2px solid transparent;
+    border-right: 2px solid transparent;
+
+    border-radius: 50%;
+    animation: rotation 1s linear infinite;
+
+    @keyframes rotation {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+`
 
 export const BoxSuccess = styled.div<{ active: boolean }>`
   display: flex;

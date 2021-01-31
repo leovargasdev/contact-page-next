@@ -4,7 +4,7 @@ import { FaRegEnvelope, FaPaperPlane, FaCheckCircle } from 'react-icons/fa'
 import Input from '../Input'
 import {
   Container,
-  // Loading,
+  Loading,
   Title,
   TitleLines,
   GridInputs,
@@ -13,6 +13,7 @@ import {
 } from './styles'
 
 const ContactForm: React.FC = () => {
+  const [loading, setLoading] = useState(false)
   const [successSubmit, setSuccessSubmit] = useState(false)
   const handleSubmit = useCallback(event => {
     event.preventDefault()
@@ -23,19 +24,22 @@ const ContactForm: React.FC = () => {
       company: event.target[3].value,
       message: event.target[4].value
     }
-
+    setLoading(true)
     fetch('/api/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     }).then(res => {
-      if (res.ok) setSuccessSubmit(true)
+      if (res.ok) {
+        setLoading(false)
+        setSuccessSubmit(true)
+      }
     })
   }, [])
 
   return (
     <Container>
-      {/* <Loading /> */}
+      {loading && <Loading />}
 
       <Title>
         <h2>Envie-nos uma mensagem</h2>
@@ -48,45 +52,47 @@ const ContactForm: React.FC = () => {
           <FaRegEnvelope />
         </div>
       </Title>
-      <form onSubmit={handleSubmit}>
-        <GridInputs>
+      {!successSubmit && (
+        <form onSubmit={handleSubmit}>
+          <GridInputs>
+            <Input
+              name="name"
+              label="Nome Completo"
+              type="text"
+              placeholder="Fulano da Silva"
+            />
+            <Input
+              name="email"
+              label="Endereço de E-mail"
+              type="email"
+              placeholder="exemplo@dominio.com"
+            />
+            <Input
+              name="phone"
+              label="Telefone"
+              type="text"
+              placeholder="(99) 99999-9999"
+            />
+            <Input
+              name="company"
+              label="Empresa"
+              type="text"
+              placeholder="Empresa A"
+            />
+          </GridInputs>
           <Input
-            name="name"
-            label="Nome Completo"
+            name="message"
+            label="Mensagem"
             type="text"
-            placeholder="Fulano da Silva"
+            defaultValue="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+            placeholder="Escreva sua mensagem aqui"
           />
-          <Input
-            name="email"
-            label="Endereço de E-mail"
-            type="email"
-            placeholder="exemplo@dominio.com"
-          />
-          <Input
-            name="phone"
-            label="Telefone"
-            type="text"
-            placeholder="(99) 99999-9999"
-          />
-          <Input
-            name="company"
-            label="Empresa"
-            type="text"
-            placeholder="Empresa A"
-          />
-        </GridInputs>
-        <Input
-          name="message"
-          label="Mensagem"
-          type="text"
-          defaultValue="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-          placeholder="Escreva sua mensagem aqui"
-        />
 
-        <Button type="submit">
-          Enviar <FaPaperPlane />
-        </Button>
-      </form>
+          <Button type="submit">
+            Enviar <FaPaperPlane />
+          </Button>
+        </form>
+      )}
       <BoxSuccess active={successSubmit}>
         <FaCheckCircle />
         <h1>Mensagem enviada com sucesso!</h1>
