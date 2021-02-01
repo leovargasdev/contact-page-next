@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import media from 'styled-media-query'
 
 export const Container = styled.div`
   flex: 1;
@@ -12,6 +13,12 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
   }
+
+  ${media.lessThan('medium')`
+    width: 100%;
+    min-height: 300px;
+    border-radius: 8px 8px 0 0;
+  `}
 `
 
 export const Loading = styled.span`
@@ -67,6 +74,7 @@ export const BoxSuccess = styled.div<{ active: boolean }>`
   margin: auto;
   visibility: hidden;
   background: #0f8b8d;
+  border-radius: 12px 0 0 12px;
 
   position: absolute;
   top: 0;
@@ -95,6 +103,19 @@ export const BoxSuccess = styled.div<{ active: boolean }>`
 
     transition: all ease 0.8s;
   }
+
+  ${media.lessThan('medium')`
+    border-radius: 8px 8px 0 0;
+    svg {
+      width: 100px;
+      height: 100px;
+    }
+
+    h1 {
+      font-size: 24px;
+      text-align: center;
+    }
+  `}
 
   ${props =>
     props.active &&
@@ -133,7 +154,17 @@ export const Title = styled.div`
   }
 
   margin-bottom: 60px;
+
+  ${media.lessThan('medium')`
+    margin-bottom: 30px;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  `}
 `
+
 export const TitleLines = styled.div`
   display: flex;
   flex-direction: column;
@@ -162,6 +193,18 @@ export const TitleLines = styled.div`
   span:nth-child(3) {
     width: 7px;
   }
+
+  ${media.lessThan('medium')`
+    span:nth-child(1) {
+      width: 20px;
+    }
+    span:nth-child(2) {
+      width: 10px;
+    }
+    span:nth-child(3) {
+      width: 4px;
+    }
+  `}
 `
 
 export const GridInputs = styled.div`
@@ -170,6 +213,26 @@ export const GridInputs = styled.div`
   gap: 40px;
 
   margin-bottom: 40px;
+
+  ${media.lessThan('large')`
+    gap: 30px;
+    margin-bottom: 30px;
+  `}
+
+  ${media.lessThan('medium')`
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0px;
+
+    margin-bottom: 20px;
+
+    div {
+      & + div {
+        margin-top: 20px;
+      }
+    }
+  `}
 `
 
 export const Button = styled.button`
@@ -201,4 +264,18 @@ export const Button = styled.button`
     cursor: pointer;
     background: #4d386d;
   }
+
+  ${media.lessThan('medium')`
+    width: 75%;
+    height: 45px;
+    font-size: 16px;
+    margin-top: 30px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+
+      margin-left: 6px;
+    }
+  `}
 `

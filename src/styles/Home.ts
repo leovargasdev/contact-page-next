@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import media from 'styled-media-query'
 
 export const Container = styled.main`
   display: flex;
@@ -12,7 +13,13 @@ export const Container = styled.main`
     rgba(103, 67, 148, 1) 70%
   );
 
-  padding: 0 40px;
+  padding: 40px;
+
+  ${media.lessThan('medium')`
+    height: 100%;
+    min-height: 100vh;
+    padding: 30px 20px;
+  `}
 `
 
 export const Content = styled.section`
@@ -34,4 +41,24 @@ export const Content = styled.section`
 
     padding: 60px;
   }
+
+  ${media.lessThan('large')`
+    > div {
+      padding: 30px;
+    }
+  `}
+
+  ${media.lessThan('medium')`
+    flex-direction: column;
+    border-radius: 8px;
+    height: auto;
+
+    > div {
+      padding: 30px;
+
+      h2 {
+        font-size: 18px;
+      }
+    }
+  `}
 `

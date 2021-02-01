@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react'
 import { FaRegEnvelope, FaPaperPlane, FaCheckCircle } from 'react-icons/fa'
 
+import { phoneMask } from '../../utils/mask'
 import Input from '../Input'
 import {
   Container,
@@ -13,14 +14,16 @@ import {
 } from './styles'
 
 const ContactForm: React.FC = () => {
+  const [phone, setPhone] = useState('')
   const [loading, setLoading] = useState(false)
   const [successSubmit, setSuccessSubmit] = useState(false)
+
   const handleSubmit = useCallback(event => {
     event.preventDefault()
     const data = {
       name: event.target[0].value,
       email: event.target[1].value,
-      phone: event.target[2].value,
+      phone,
       company: event.target[3].value,
       message: event.target[4].value
     }
@@ -72,6 +75,9 @@ const ContactForm: React.FC = () => {
               label="Telefone"
               type="text"
               placeholder="(99) 99999-9999"
+              value={phone}
+              maxLength={15}
+              onChange={e => setPhone(phoneMask(e.target.value))}
             />
             <Input
               name="company"
