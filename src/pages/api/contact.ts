@@ -7,7 +7,11 @@ import pt from 'date-fns/locale/pt'
 const contact = async (request: NextApiRequest, response: NextApiResponse) => {
   const { name, email, phone, company, message } = request.body
 
-  const date = format(new Date(), "dd' de 'MMMM' de 'yyyy', às 'hh:mm", {
+  const dateTimeZone = new Date()
+  dateTimeZone.toLocaleString('pt-BR', {
+    timeZone: 'America/Sao_Paulo'
+  })
+  const date = format(dateTimeZone, "dd' de 'MMMM' de 'yyyy', às 'HH:mm", {
     locale: pt
   })
 
@@ -20,7 +24,14 @@ const contact = async (request: NextApiRequest, response: NextApiResponse) => {
   await doc.loadInfo()
 
   const sheet = doc.sheetsByIndex[0]
-  await sheet.addRow({ name, email, phone, company, message, date })
+  await sheet.addRow({
+    name,
+    email,
+    phone,
+    company,
+    message,
+    date
+  })
 
   response.status(200).json({ ok: true })
 }
