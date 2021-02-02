@@ -1,34 +1,95 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">Formulário com Next.js + Google Planilhas</h1>
 
-## Getting Started
+<p align="center" fontSize="60px">
+  Armazene os dados de um formulário no Google Planilhas
+</p>
 
-First, run the development server:
+<p align="center">
+  <img alt="Layout da aplicação" width="100%" src="./.github/screenshot.png" />
+</p>
+
+## 💻 Projeto
+
+Esse projeto tem como objetivo apresentar uma forma gratuita e rápida para capturar e salvar os dados de um formulário web, sem a necessidade de pagar por um servidor com algum banco de dados ou depender de um serviço gratuito lento.
+
+No [Google Cloud Platform](https://cloud.google.com/) é possível você cadastrar chaves para as aplicações do google, neste caso foi cadastrado uma chave para o serviço Google Sheets API. Com as credenciais em mãos basta carregá-las na lib [google-spreadsheet](https://github.com/theoephraim/node-google-spreadsheet) e enviar os dados do formulário através dela.
+
+### Conceitos abordados
+
+- Uso de flexbox para alinhar e ajustar elementos na página.
+
+- Comunicação com serviços externos.
+
+- Responsividade
+
+- Componentização no React.
+
+- Efeitos/Animações no CSS.
+
+## :rocket: Tecnologias
+
+-  [Next.js](https://nextjs.org/)
+-  [TypeScript](https://www.typescriptlang.org/)
+-  [Styled-components](https://www.styled-components.com/)
+-  [React-Icons](https://react-icons.netlify.com/)
+-  [Google SpreadSheet](https://github.com/theoephraim/node-google-spreadsheet/)
+-  [Vercel](https://vercel.com/)
+
+## 📥 Instalação e execução
+
+Faça um clone desse repositório e acesse o diretório.
 
 ```bash
-npm run dev
-# or
-yarn dev
+$ git clone git@github.com:LeeonardoVargas/contact-page-next.git && cd contact-page-next
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Edite as seguintes VARIÁVEIS AMBIENTES no arquivo `env.example`:
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```bash
+# ID da sua planilha
+GOOGLE_SHEET_ID=
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+# Email da sua credencial no Google Sheets API
+GOOGLE_API_CLIENT_EMAIL=
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+# Chave privada da sua credencial no Google Sheets API
+GOOGLE_API_PRIVATE_KEY=
+```
 
-## Learn More
+```bash
+# Instalando as dependências
+$ yarn
 
-To learn more about Next.js, take a look at the following resources:
+# Executanto aplicação
+$ yarn start
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## :muscle: Contribuir
 
-## Deploy on Vercel
+Faça o `fork` e clone o projeto a partir do seu usuário.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+# Clonando projeto
+$ git clone https://github.com/SEU-NOME-DE-USUARIO/contact-page-next.git
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# Criando um branch
+$ git branch minha-alteracao
+
+# Acessando o novo branch
+$ git checkout -b minha-alteracao
+
+# Adicionando os arquivos alterados
+$ git add .
+
+# Criando commit e a mensagem
+$ git commit -m "Corrigindo...."
+
+# Enviando alterações para o brach
+$ git push origin minha-alteracao
+```
+Você deve navegar até o seu repositório onde fez o fork e clicar no botão *New pull request* no lado esquerdo da página.
+
+## 📝 Licença
+
+Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
