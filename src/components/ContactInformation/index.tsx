@@ -24,8 +24,8 @@ const ContactInformation: React.FC = () => (
       <ContentRow>
         <FaMobileAlt color="#666" />
         <div>
-          <p>WhatsApp ─ (048) 98888 - 7777</p>
-          <p>Comercial ─ (048) 3322 - 1100</p>
+          <p>WhatsApp ─ (048) 98820 - 7173</p>
+          <p>Comercial ─ (048) 3321 - 1250</p>
         </div>
       </ContentRow>
     </Content>

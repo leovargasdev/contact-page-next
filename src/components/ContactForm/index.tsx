@@ -18,27 +18,30 @@ const ContactForm: React.FC = () => {
   const [loading, setLoading] = useState(false)
   const [successSubmit, setSuccessSubmit] = useState(false)
 
-  const handleSubmit = useCallback(event => {
-    event.preventDefault()
-    const data = {
-      name: event.target[0].value,
-      email: event.target[1].value,
-      phone,
-      company: event.target[3].value,
-      message: event.target[4].value
-    }
-    setLoading(true)
-    fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    }).then(res => {
-      if (res.ok) {
-        setLoading(false)
-        setSuccessSubmit(true)
+  const handleSubmit = useCallback(
+    event => {
+      event.preventDefault()
+      const data = {
+        name: event.target[0].value,
+        email: event.target[1].value,
+        phone,
+        company: event.target[3].value,
+        message: event.target[4].value
       }
-    })
-  }, [])
+      setLoading(true)
+      fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      }).then(res => {
+        if (res.ok) {
+          setLoading(false)
+          setSuccessSubmit(true)
+        }
+      })
+    },
+    [phone]
+  )
 
   return (
     <Container>
@@ -90,7 +93,6 @@ const ContactForm: React.FC = () => {
             name="message"
             label="Mensagem"
             type="text"
-            defaultValue="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
             placeholder="Escreva sua mensagem aqui"
           />
 

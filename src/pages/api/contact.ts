@@ -8,9 +8,11 @@ const contact = async (request: NextApiRequest, response: NextApiResponse) => {
   const { name, email, phone, company, message } = request.body
 
   const dateTimeZone = new Date()
-  dateTimeZone.toLocaleString('pt-BR', {
-    timeZone: 'America/Sao_Paulo'
-  })
+  // Atualiza para o timezone do Brasil
+  if (process.env.NODE_ENV !== 'development') {
+    dateTimeZone.setHours(dateTimeZone.getHours() - 3)
+  }
+
   const date = format(dateTimeZone, "dd' de 'MMMM' de 'yyyy', às 'HH:mm", {
     locale: pt
   })

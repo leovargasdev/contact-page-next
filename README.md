@@ -14,7 +14,7 @@ Esse projeto tem como objetivo apresentar uma forma fácil e gratuita de armazen
 
 Uma das alternativas é usar uma planilha do google para armazenar tais informações. No Google existe o [APIs Google Cloud](https://cloud.google.com/apis/docs/overview) onde é fornecido diversos serviços que permite você se conectar com as ferramentas do Google.
 
-Entre esse serviços há o **Google Sheets API** e com ele é possível consumir e enviar dados direto para uma planilha. Ao selecioná-lo é gerado algumas credenciais de acesso como **client_email** e **private_key** que serão usadas para autenticar a conexão ao **Google Sheets API**.
+Entre esse serviços há o **Google Sheets API** e com ele é possível consumir e enviar dados direto para uma planilha. Ao selecioná-lo é gerado algumas credenciais de acesso como **client_email** e **private_key** que serão usadas para autenticar a conexão.
 
 Para facilitar o uso desse serviço foi utilizado a lib [google-spreadsheet](https://github.com/theoephraim/node-google-spreadsheet) para criar conexão e manipular os dados da planilha.
 
