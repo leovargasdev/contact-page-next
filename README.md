@@ -45,6 +45,8 @@ Você pode visualizar a planilha usada neste projeto através [desse link](https
 
 - Uso de variáveis ambientes.
 
+- Máscara com expressão regular
+
 ## :rocket: Tecnologias
 
 -  [Next.js](https://nextjs.org/)
