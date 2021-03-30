@@ -82,7 +82,7 @@ GOOGLE_API_PRIVATE_KEY=
 $ yarn
 
 # Executanto aplicação
-$ yarn start
+$ yarn dev
 
 ```
 
